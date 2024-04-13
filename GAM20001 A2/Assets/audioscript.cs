@@ -10,7 +10,7 @@ public class audioscript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        source.loop = true;
     }
 
     // Update is called once per frame
@@ -18,7 +18,7 @@ public class audioscript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A)) 
         {
-            source.PlayOneShot(clip);
+            source.Play();
         
         }
         
