@@ -7,21 +7,23 @@ public class collisionscript : MonoBehaviour
     public AudioClip collisionSound;
     public AudioSource audioSource;
     public GameObject objectPrefab;
+
+    private bool hasAlreadyCollided = false;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "enemy")
+        if (other.gameObject.tag == "enemy" && !hasAlreadyCollided)
         {
             print("ENTER");
+            hasAlreadyCollided = true;
 
             if (audioSource != null && collisionSound != null && !audioSource.isPlaying)
             {
                 audioSource.PlayOneShot(collisionSound);
             }
-
+            
             Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            // Instantiate the objectPrefab at the collision point
             Instantiate(objectPrefab, collisionPoint, Quaternion.identity);
+            
         }
     }
 
