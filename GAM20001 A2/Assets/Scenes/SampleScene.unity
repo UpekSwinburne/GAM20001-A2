@@ -345,6 +345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionSound: {fileID: 8300000, guid: cce8e2bb33f0e6547bc243fe5bbf40dd, type: 3}
   audioSource: {fileID: 1237798264}
+  objectPrefab: {fileID: 1510588699}
 --- !u!54 &1237798259
 Rigidbody:
   m_ObjectHideFlags: 0
