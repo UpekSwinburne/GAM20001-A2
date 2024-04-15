@@ -14,7 +14,7 @@ public class RespawnScript : MonoBehaviour
     {
         if(transform.position.y < threshold)
         {
-            transform.position = new Vector3(0.41f, 2.32f, 0.005f);
+            transform.position = new Vector3(10.50f, 15.57f, -14.84f);
         }
     }
 }
