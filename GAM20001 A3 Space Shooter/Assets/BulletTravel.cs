@@ -5,7 +5,14 @@ using UnityEngine;
 public class BulletTravel : MonoBehaviour
 {
     public float maxSpeed = 20f;
+    public float lifeTime = 2f;
     // Update is called once per frame
+
+    void Start()
+    {
+        Destroy(gameObject, lifeTime);
+        
+    }
     void Update()
     {
         Vector3 pos = transform.position;
@@ -14,5 +21,10 @@ public class BulletTravel : MonoBehaviour
 
         transform.position = pos;
 
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }
