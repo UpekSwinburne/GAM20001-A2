@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,19 +22,19 @@ public class HealthController : MonoBehaviour
     public bool IsInvincible { get; set; }
 
     public UnityEvent OnDied;
-
     public UnityEvent OnDamaged;
-
     public UnityEvent OnHealthChanged;
+
+    private Animator _animator;
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     public void TakeDamage(float damageAmount)
     {
-        if (_currentHealth == 0)
-        {
-            return;
-        }
-
-        if (IsInvincible)
+        if (_currentHealth == 0 || IsInvincible)
         {
             return;
         }
@@ -51,7 +50,7 @@ public class HealthController : MonoBehaviour
 
         if (_currentHealth == 0)
         {
-            OnDied.Invoke();
+            Die();
         }
         else
         {
@@ -74,5 +73,25 @@ public class HealthController : MonoBehaviour
         {
             _currentHealth = _maximumHealth;
         }
+    }
+
+    private void Die()
+    {
+        OnDied.Invoke();
+
+        if (_animator != null)
+        {
+            _animator.SetTrigger("Die");
+        }
+
+        // Delay destruction until after the animation plays
+        StartCoroutine(DestroyAfterAnimation());
+    }
+
+    private IEnumerator DestroyAfterAnimation()
+    {
+        // Wait for the length of the death animation
+        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
+        Destroy(gameObject);
     }
 }
