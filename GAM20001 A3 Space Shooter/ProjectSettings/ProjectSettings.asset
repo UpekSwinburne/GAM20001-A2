@@ -700,13 +700,13 @@ PlayerSettings:
   hmiLogStartupTiming: 0
   hmiCpuConfiguration: 
   apiCompatibilityLevel: 6
-  activeInputHandler: 0
+  activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: bb550fcf-df82-4bd2-a52c-5dbabcb8bd8e
+  cloudProjectId: f4215672-ffcd-44d4-8904-439a2ea8c61c
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: GAM20001 A3 Space Shooter
-  organizationId: upek1234
+  projectName: My project
+  organizationId: nminh1749
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
