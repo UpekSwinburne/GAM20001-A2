@@ -9,6 +9,12 @@ public class CollectableSpawner : MonoBehaviour
 
     public void SpawnCollectable(Vector2 position)
     {
+        if (_collectablePrefabs.Count == 0)
+        {
+            Debug.LogWarning("No collectable prefabs assigned to the spawner.");
+            return;
+        }
+
         int index = Random.Range(0, _collectablePrefabs.Count);
         var selectedCollectable = _collectablePrefabs[index];
 

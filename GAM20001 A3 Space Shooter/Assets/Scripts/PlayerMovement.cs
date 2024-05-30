@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     private void PreventPlayerGoingOffScreen()
     {
         Vector2 screenPosition = _camera.WorldToScreenPoint(transform.position);
-
+    
         if ((screenPosition.x < _screenBorder && _rigidbody.velocity.x < 0) ||
             (screenPosition.x > _camera.pixelWidth - _screenBorder && _rigidbody.velocity.x > 0))
         {

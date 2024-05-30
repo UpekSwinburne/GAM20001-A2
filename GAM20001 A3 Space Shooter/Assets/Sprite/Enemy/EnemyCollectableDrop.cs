@@ -16,6 +16,12 @@ public class EnemyCollectableDrop : MonoBehaviour
 
     public void RandomlyDropCollectable()
     {
+        if (_collectableSpawner == null)
+        {
+            Debug.LogError("CollectableSpawner not found in the scene.");
+            return;
+        }
+
         float random = Random.Range(0f, 1f);
 
         if (_chanceOfCollectableDrop >= random)
