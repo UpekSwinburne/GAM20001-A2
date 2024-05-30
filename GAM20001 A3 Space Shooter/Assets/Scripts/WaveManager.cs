@@ -8,6 +8,12 @@ public class WaveManager : MonoBehaviour
 
     private int _currentWave = 0;
 
+    // Property to get the current wave number
+    public int CurrentWave
+    {
+        get { return _currentWave; }
+    }
+
     private void Start()
     {
         StartNewWave();
