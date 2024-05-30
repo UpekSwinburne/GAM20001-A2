@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyCollectableDrop : MonoBehaviour
 {
     [SerializeField]
-    private float _chanceOfCollectableDrop;
+    private float _chanceOfCollectableDrop = 1f; // Adjust this value to control the rarity of collectables
 
     private CollectableSpawner _collectableSpawner;
 
@@ -16,12 +16,6 @@ public class EnemyCollectableDrop : MonoBehaviour
 
     public void RandomlyDropCollectable()
     {
-        if (_collectableSpawner == null)
-        {
-            Debug.LogError("CollectableSpawner not found in the scene.");
-            return;
-        }
-
         float random = Random.Range(0f, 1f);
 
         if (_chanceOfCollectableDrop >= random)

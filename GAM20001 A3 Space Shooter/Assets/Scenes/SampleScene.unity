@@ -967,6 +967,7 @@ MonoBehaviour:
   _bulletSpeed: 50
   _gunOffset: {fileID: 1172643141}
   _timeBetweenShots: 0.25
+  _tripleShotDuration: 5
 --- !u!114 &1305617155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1342,6 +1343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collectablePrefabs:
   - {fileID: 62383178925892805, guid: 834c4444e72bf084b97c1a45a64ed111, type: 3}
+  - {fileID: 4924516280832481675, guid: 7c536f35559666347b6f9d70eb8c5f9f, type: 3}
 --- !u!4 &1814668843
 Transform:
   m_ObjectHideFlags: 0

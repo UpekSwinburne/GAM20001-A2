@@ -1,38 +1,46 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _enemyPrefab;
+    [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private float _initialSpawnDelay = 1f;
+    [SerializeField] private float _spawnDelayBetweenEnemies = 0.5f;
 
-    [SerializeField]
-    private float _minimumSpawnTime;
+    private WaveManager _waveManager;
+    private Coroutine _spawnCoroutine;
 
-    [SerializeField]
-    private float _maximumSpawnTime;
-
-    private float _timeUntilSpawn;
-
-    void Awake()
+    private void Awake()
     {
-        SetTimeUntilSpawn();
+        _waveManager = FindObjectOfType<WaveManager>();
     }
 
-    void Update()
+    public void StartWave(int waveNumber, int totalEnemies)
     {
-        _timeUntilSpawn -= Time.deltaTime;
+        _spawnCoroutine = StartCoroutine(SpawnEnemiesCoroutine(totalEnemies));
+    }
 
-        if (_timeUntilSpawn <= 0)
+    private IEnumerator SpawnEnemiesCoroutine(int totalEnemies)
+    {
+        yield return new WaitForSeconds(_initialSpawnDelay);
+
+        for (int i = 0; i < totalEnemies; i++)
         {
-            Instantiate(_enemyPrefab, transform.position, Quaternion.identity);
-            SetTimeUntilSpawn();
+            SpawnEnemy();
+            yield return new WaitForSeconds(_spawnDelayBetweenEnemies);
         }
     }
 
-    private void SetTimeUntilSpawn()
+    private void SpawnEnemy()
     {
-        _timeUntilSpawn = Random.Range(_minimumSpawnTime, _maximumSpawnTime);
+        Instantiate(_enemyPrefab, transform.position, Quaternion.identity);
+    }
+
+    public void StopSpawning()
+    {
+        if (_spawnCoroutine != null)
+        {
+            StopCoroutine(_spawnCoroutine);
+        }
     }
 }
