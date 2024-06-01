@@ -18,7 +18,7 @@ public class PlayerShoot : MonoBehaviour
     private float _timeBetweenShots;
 
     [SerializeField]
-    private float _tripleShotDuration = 5f; // Duration of the triple shot power-up
+    // private float _tripleShotDuration = 5f; // Duration of the triple shot power-up
 
     private bool _fireContinuously;
     private bool _fireSingle;
