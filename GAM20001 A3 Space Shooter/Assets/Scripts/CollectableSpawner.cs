@@ -24,12 +24,12 @@ public class CollectableSpawner : MonoBehaviour
         }
         else if (_activeCollectables.Count == _maxCollectablesOnScreen)
         {
-            // Check if any collectable has been collected or destroyed
+            
             for (int i = 0; i < _activeCollectables.Count; i++)
             {
                 if (_activeCollectables[i] == null)
                 {
-                    // If a collectable is destroyed, remove it from the active list
+                    
                     _activeCollectables.RemoveAt(i);
                     break;
                 }
