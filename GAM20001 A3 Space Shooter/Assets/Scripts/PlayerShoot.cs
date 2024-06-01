@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerShoot : MonoBehaviour
 {
+    public AudioSource audioSource;
+    public AudioClip shootingAudioClip;
     [SerializeField]
     private GameObject _bulletPrefab;
 
@@ -90,7 +92,8 @@ public class PlayerShoot : MonoBehaviour
 
 
     private void OnFire(InputValue inputValue)
-    {
+    {   
+        audioSource.PlayOneShot(shootingAudioClip);
         _fireContinuously = inputValue.isPressed;
 
         if (inputValue.isPressed)
